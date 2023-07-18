@@ -29,4 +29,43 @@ const p = new Person({
 }
 )
 
+p.save();
+
+//create a nothers persons
+Person.create([
+    {
+        Name: 'Raznati Radjabou',
+        Age:29,
+        favoriteFoods :['Manioc', 'samboussa']
+    },
+    
+    {
+        Name: 'Zayane Hassane',
+        Age:2,
+        favoriteFoods :['Lait', 'céréales']
+    },
+    {
+        Name: 'Namir Mistoihi',
+        Age:3,
+        favoriteFoods :['Jus', 'Burger']
+    },
+    {
+        Name: 'Milane Mounir',
+        Age:1,
+        favoriteFoods :['Fruits', 'légumes']
+    },
+]
+);
+
+//use model.find() ton search your database (all person having a giver name)
+
+
+//Use model.findOne() to Return a Single Matching Document from the Database
+Person.findOne({favoriteFoods:'samboussa'})
+
+
+//Use model.findById() to Search Your Database By _id
+Person.findById({}) 
+
+//Updates by Running Find, Edit, then Save
 
