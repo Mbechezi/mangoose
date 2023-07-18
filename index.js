@@ -58,7 +58,7 @@ Person.create([
 );
 
 //use model.find() ton search your database (all person having a giver name)
-
+Person.find({ Name })
 
 //Use model.findOne() to Return a Single Matching Document from the Database
 Person.findOne({ favoriteFoods: 'samboussa' })
@@ -74,17 +74,26 @@ Person.findById("64b57d154763023a9b8342c9").then((personId) => {
 })
 
 //New Updates on a Document Using model.findOneAndUpdate()
-Person.findOneAndUpdate(
-    { Name:"Mouslim Youssouf" },
-    { age: 20 },
-    { new: true }
+Person.findOneAndUpdate({
+    Name: "Mouslim Youssouf",
+    age: 20,
+    new: true
+}
 )
 
-
 //Delete One Document Using model.findByIdAndRemove
-Person.findByIdAndRemove("64b57d154763023a9b8342cc")
+Person.findByIdAndRemove("64b57d154763023a9b8342cc");
 
 //MongoDB and Mongoose - Delete Many Documents with model.remove()
-
+Person.findOneAndRemove()
 
 //Chain Search Query Helpers to Narrow Search Results
+Person.find({ favoriteFoods: "légumes" }).sort('name').limit(2).select({ Age: "null" }).exec((err, data) => {
+    if (err) {
+        console.log(err)
+    }
+    else {
+        console.log(data)
+    }
+}
+);
